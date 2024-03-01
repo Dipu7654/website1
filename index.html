@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Skyder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- LOAD CSS FILES -->
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <!--   <link href="css/bootstrap.css" rel="stylesheet" type="text/css"> -->
+    <script src="js/jquery.min.js"></script>
+    <style>
+        /*
+Fade content bs-carousel with hero headers
+Code snippet by maridlcrmn (Follow me on Twitter @maridlcrmn) for Bootsnipp.com
+Image credits: unsplash.com
+*/
+
+        /********************************/
+        /*       Fade Bs-carousel       */
+        /********************************/
+        .fade-carousel {
+            position: relative;
+            height: calc(100vh - 90px);
+        }
+
+        .fade-carousel .carousel-inner .item {
+            height: calc(100vh - 90px);
+        }
+
+        .fade-carousel .carousel-indicators>li {
+            margin: 0 2px;
+            background-color: #f39c12;
+            border-color: #f39c12;
+            opacity: .7;
+        }
+
+        .fade-carousel .carousel-indicators>li.active {
+            width: 10px;
+            height: 10px;
+            opacity: 1;
+        }
+
+        .carousel-control .fa-chevron-right,
+        .carousel-control .fa-chevron-left {
+            position: absolute;
+            top: 50%;
+            z-index: 5;
+            display: inline-block;
+        }
+
+        .carousel-control {
+            z-index: 2;
+        }
+
+        /********************************/
+        /*          Hero Headers        */
+        /********************************/
+        .hero {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 3;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, .75);
+            -webkit-transform: translate3d(-50%, -50%, 0);
+            -moz-transform: translate3d(-50%, -50%, 0);
+            -ms-transform: translate3d(-50%, -50%, 0);
+            -o-transform: translate3d(-50%, -50%, 0);
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+
+        .fade-carousel .carousel-inner .item .hero {
+            opacity: 0;
+            -webkit-transition: 2s all ease-in-out .1s;
+            -moz-transition: 2s all ease-in-out .1s;
+            -ms-transition: 2s all ease-in-out .1s;
+            -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
+        }
+
+        .fade-carousel .carousel-inner .item.active .hero {
+            opacity: 1;
+            -webkit-transition: 2s all ease-in-out .1s;
+            -moz-transition: 2s all ease-in-out .1s;
+            -ms-transition: 2s all ease-in-out .1s;
+            -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
+        }
+
+        /********************************/
+        /*            Overlay           */
+        /********************************/
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-color: #080d15;
+            opacity: .7;
+            top: 0;
+        }
+
+        /********************************/
+        /*          Custom Buttons      */
+        /********************************/
+        .btn.btn-lg {
+            padding: 10px 40px;
+        }
+
+        .btn.btn-hero,
+        .btn.btn-hero:hover,
+        .btn.btn-hero:focus {
+            color: #f5f5f5;
+            background-color: #1abc9c;
+            border-color: #1abc9c;
+            outline: none;
+            margin: 20px auto;
+        }
+
+        /********************************/
+        /*       Slides backgrounds     */
+        /********************************/
+        .fade-carousel .slides .slide-1,
+        .fade-carousel .slides .slide-2,
+        .fade-carousel .slides .slide-3,
+        .fade-carousel .slides .slide-4 {
+            height: calc(100vh - 90px);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .fade-carousel .slides .slide-1 {
+            background-image: url(img/slider/3.jpg);
+        }
+
+        .fade-carousel .slides .slide-2 {
+            background-image: url(img/slider/2.jpg);
+        }
+
+        .fade-carousel .slides .slide-3 {
+            background-image: url(img/slider/1.jpg);
+        }
+
+        .fade-carousel .slides .slide-4 {
+            background-image: url(img/slider/4.jpg);
+        }
+
+        /********************************/
+        /*          Media Queries       */
+        /********************************/
+        @media screen and (min-width: 980px) {
+            .hero {
+                width: 980px;
+            }
+        }
+
+        @media screen and (max-width: 640px) {
+            .hero h1 {
+                font-size: 4em;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="preloader"></div>
+    <div id="wrapper">
+
+        <!-- header begin -->
+        <header class="transparent">
+            <div class="container">
+                <span id="menu-btn"></span>
+
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <!-- logo begin -->
+                        <div id="logo">
+                            <div class="inner">
+                                <a href="index.html">
+                                    <img src="img/logo.png" alt="" class="logo-1">
+                                    <img src="img/logo.png" alt="" class="logo-2">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- logo close -->
+
+                    </div>
+
+                    <div class="col-md-9">
+
+                        <!-- mainmenu begin -->
+                        <nav id="mainmenu-container">
+                            <ul id="mainmenu">
+                                <li><a href="index.html">Home</a></li>
+                                <!--  <ul>
+                                        <li><a href="index.html">Homepage 1</a></li>
+                                        <li><a href="index-2.html">Homepage 2</a></li>
+                                        <li><a href="index-3.html">Homepage 3</a></li>
+                                    </ul>
+                                </li> -->
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Product</a>
+                                    <ul>
+                                        <li><a href="#">Air Freight</a></li>
+                                        <li><a href="#">Ocean Freight</a></li>
+                                        <li><a href="#">Rail Freight</a>
+                                        <li><a href="#">Contract Logistics</a></li>
+                                        <li><a href="#">Customs Clearance</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Industries</a>
+                                    <ul>
+                                        <li><a href="#"> Automotive </a></li>
+                                        <li><a href="#"> Manufacturing </a></li>
+                                        <li><a href="#"> Food Grade</a>
+                                        <li><a href="#"> Defence </a></li>
+                                        <li><a href="#"> Electronics</a></li>
+                                        <li><a href="#"> Pharma </a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">News</a></li>
+                                <li><a href="#">Resources</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <!-- mainmenu close -->
+
+                        <!-- search -->
+                        <!-- <div class="search text-right">
+                            <input type="text" name="search" id="search" placeholder="search">
+                            <button type="submit" class="btn-search-icon">
+								<i class="fa fa-search"></i>
+							</button>
+                        </div> -->
+                        <!-- social icons close -->
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header close -->
+
+        <!-- content begin -->
+        <div id="content" class="no-padding">
+            <!-- section begin -->
+            <section id="section-video" class="no-padding autoheight light-text" data-stellar-background-ratio="0.5">
+                <div class="carousel fade-carousel slide carousel-fade" data-ride="carousel" data-interval="4000"
+                    id="bs-carousel">
+                    <!-- Overlay -->
+                    <div class="overlay"></div>
+
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#bs-carousel" data-slide-to="1"></li>
+                        <li data-target="#bs-carousel" data-slide-to="2"></li>
+                        <li data-target="#bs-carousel" data-slide-to="3"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item slides active">
+                            <div class="slide-1"></div>
+                            <div class="hero">
+                                <hgroup>
+                                    <h1>Loyalty</h1>
+                                    <h3>Together we move forward</h3>
+                                </hgroup>
+                                <!--  <button class="btn btn-hero btn-lg" role="button">See all features</button> -->
+                            </div>
+                        </div>
+                        <div class="item slides">
+                            <div class="slide-2"></div>
+                            <div class="hero">
+                                <hgroup>
+                                    <h1>Safety & Security</h1>
+                                    <h3>Just like we take care of our baby</h3>
+                                </hgroup>
+                                <!--  <button class="btn btn-hero btn-lg" role="button">See all features</button> -->
+                            </div>
+                        </div>
+                        <div class="item slides">
+                            <div class="slide-3"></div>
+                            <div class="hero">
+                                <hgroup>
+                                    <h1>Building Future</h1>
+                                    <h3>Working towards a better tomorrow</h3>
+                                </hgroup>
+                                <!-- <button class="btn btn-hero btn-lg" role="button">See all features</button> -->
+                            </div>
+                        </div>
+                        <div class="item slides">
+                            <div class="slide-4"></div>
+                            <div class="hero">
+                                <hgroup>
+                                    <h1>Contributing to Society </h1>
+                                    <h3>We give back what we take</h3>
+                                </hgroup>
+                                <!-- <button class="btn btn-hero btn-lg" role="button">See all features</button> -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#bs-carousel" role="button" data-slide="prev">
+                        <span class="fa fa-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#bs-carousel" role="button" data-slide="next">
+                        <span class="fa fa-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <div class="bg-overlay overlaydark80"></div>
+
+                <!-- HTML5 Video Code -->
+
+                <!--   <video autoplay="autoplay" loop="loop" autobuffer="autobuffer" muted="muted" poster="img/poster.jpg" width="640" height="360">
+				<source src="video/video-cargo-1.mp4" type="video/mp4" />
+				<source src="video/video-cargo-1.webm" type="video/webm" />
+			</video> -->
+
+            </section>
+            <!-- section close -->
+
+
+            <section class="no-padding mt-90 absolute width100 z-index10 height95px overlaydark70">
+                <div class="container">
+                    <div class="row-fluid">
+                        <div class="col-md-4">
+                            <div class="info-box padding20">
+                                <i class="fa fa-clock-o"></i>
+                                <div class="info-box_text">
+                                    <div class="info-box_title">Opening Times</div>
+                                    <div class="info-box_subtite">Monday - Friday: 10:00 - 06:00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="info-box padding20">
+                                <i class="fa fa-home"></i>
+                                <div class="info-box_text">
+                                    <div class="info-box_title">Our Location</div>
+                                    <div class="info-box_subtite">LOWER GROUND, BAKSHI HOUSE, 40-41, NEHRU PLACE, NEW
+                                        DELHI – 110019</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="info-box padding20">
+                                <i class="fa fa-phone"></i>
+                                <div class="info-box_text">
+                                    <div class="info-box_title">Our Phone</div>
+                                    <div class="info-box_subtite"> +91 11 45657629 / +91 11 41541048</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- section begin -->
+            <section id="section-side-2" class="side-bg">
+                <div class="col-md-6 col-md-offset-6 pull-right image-container">
+                    <div class="background-image"></div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <!--   <div class="col-md-5">
+
+                            <h2>Who We Are</h2>
+                            <p class="lead">Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
+                            <div class="divider-deco"><span></span></div>
+                            <p>
+                                Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.
+                                Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna. Nam nec tellus a odio tincidunt auctor.
+                            </p>
+                            <a href="#" class="btn-arrow id-color"><span class="line"></span><span class="url">View Details</span></a>
+
+                        </div> -->
+                        <div class="col-md-5" style="background-size: cover;">
+                            <div class="padding20 light-text" style="background-size: cover;">
+                                <div class="bg-2 padding30" style="background-size: cover;">
+
+
+                                    <div class="tiny-border" style="background-size: cover;"></div>
+                                    <p class="lead big">
+                                        <i>Excellence in logistics through a sense of responsibility, high industry
+                                            skills, contribution to society and loyalty with our business partner.</i>
+                                    </p>
+
+                                    <div class="widget" style="background-size: cover;">
+
+
+                                        <ul class="news-list bg-white">
+                                            <li><a href="#"><i class="fa fa-check-square"></i>Safety & Security</a></li>
+                                            <li><a href="#"><i class="fa fa-check-square"></i>Building Future</a></li>
+                                            <li><a href="#"><i class="fa fa-check-square"></i>Contributing to Society</a></li>
+                                            <li><a href="#"><i class="fa fa-check-square"></i>Loyalty</a></li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                </div>
+                                <img src="img/about/committment-image.png" class="img-custom-1" alt="">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-5 col-md-offset-2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </section>
+            <!-- section close -->
+
+            <!-- section begin -->
+
+            <!-- section close -->
+
+            <!-- section begin -->
+
+
+            <!-- section begin -->
+            <section class="no-padding">
+                <div class="container-fullwidth d-flex flex-wrap">
+                    <div id="bg-box-service-1" class="one-fourth">
+                        <div class="bg-color-fx light-text padding-5-0 text-center h-100">
+                            <h3>Consultancy</h3>
+                            <div class="tiny-border"></div>
+                            <img src="img/services/1.png"
+                                class="img-responsive margintop0 marginbottom0 wow fadeInRight" alt="" />
+                            <p>Skydr provides comprehensive and independent solutions that are lasting and future-proof.
+                            </p>
+                            <a href="service-details-1.html" class="btn-arrow hover-light"><span
+                                    class="line"></span><span class="url">View Details</span></a>
+                        </div>
+                    </div>
+
+                    <div id="bg-box-service-2" class="one-fourth">
+                        <div class="bg-color-fx light-text padding-5-0 text-center h-100">
+                            <h3>Competency </h3>
+                            <div class="tiny-border"></div>
+                            <img src="img/services/2.png"
+                                class="img-responsive margintop0 marginbottom0 wow fadeInRight" data-wow-delay=".3s"
+                                alt="" />
+                            <p>We assure fast, accurate and quality services that ensure increased revenue, cost savings
+                                and simplified distribution networks</p>
+                            <a href="service-details-1.html" class="btn-arrow hover-light"><span
+                                    class="line"></span><span class="url">View Details</span></a>
+                        </div>
+                    </div>
+
+                    <div id="bg-box-service-3" class="one-fourth">
+                        <div class="bg-color-fx light-text padding-5-0 text-center h-100">
+                            <h3>Best Performance</h3>
+                            <div class="tiny-border"></div>
+                            <img src="img/services/3.png"
+                                class="img-responsive margintop0 marginbottom0 wow fadeInRight" data-wow-delay=".6s"
+                                alt="" />
+                            <p>With over 350+ projects, 60+ clients, and a lakh & plus container handlings are the
+                                proclamation of our great performance over the years.</p>
+                            <a href="service-details-1.html" class="btn-arrow hover-light"><span
+                                    class="line"></span><span class="url">View Details</span></a>
+                        </div>
+                    </div>
+
+                    <div id="bg-box-service-4" class="one-fourth">
+                        <div class="bg-color-fx light-text padding-5-0 text-center h-100">
+                            <h3>Solutioning</h3>
+                            <div class="tiny-border "></div>
+                            <img src="img/services/4.png"
+                                class="img-responsive margintop0 marginbottom0 wow fadeInRight" data-wow-delay=".9s"
+                                alt="" />
+                            <p>Adding value to every step of solutioning chain by providing- flexibility, reliability,
+                                accuracy, value & security.</p>
+                            <a href="service-details-1.html" class="btn-arrow hover-light"><span
+                                    class="line"></span><span class="url">View Details</span></a>
+                        </div>
+                    </div>
+
+                    <div id="bg-box-service-1" class="one-fourth">
+                        <div class="bg-color-fx light-text padding-5-0 text-center h-100">
+                            <h3>Security</h3>
+                            <div class="tiny-border "></div>
+                            <img src="img/services/4.png"
+                                class="img-responsive margintop0 marginbottom0 wow fadeInRight" data-wow-delay=".9s"
+                                alt="" />
+                            <p>Our operations are designed to facilitate the safe and secure movement of all the
+                                products, goods, information and resources.</p>
+                            <a href="service-details-1.html" class="btn-arrow hover-light"><span
+                                    class="line"></span><span class="url">View Details</span></a>
+                        </div>
+                    </div>
+                    <div id="bg-box-service-2" class="one-fourth">
+                        <div class="bg-color-fx light-text padding-5-0 text-center h-100">
+                            <h3>24x7 Support</h3>
+                            <div class="tiny-border "></div>
+                            <img src="img/services/4.png"
+                                class="img-responsive margintop0 marginbottom0 wow fadeInRight" data-wow-delay=".9s"
+                                alt="" />
+                            <p>Our team of efficient specialists is always ready to provide the solutions you need at
+                                any time of the day.</p>
+                            <a href="service-details-1.html" class="btn-arrow hover-light"><span
+                                    class="line"></span><span class="url">View Details</span></a>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </section>
+            <!-- section close -->
+            <section style="background-size: cover;">
+                <div class="container" style="background-size: cover;">
+                    <div class="row" style="background-size: cover;">
+                        <div class="col-md-12">
+                            <div class="inner-padding text-center" style="background-size: cover;">
+                                <h2 class="text-center">Industries</h2>
+                                <div class="tiny-border" style="background-size: cover;"></div>
+                                <p class="lead text-center">“Being one of the leading logistics solutions providers
+                                    across the globe we understand the unique requirements each industry has! Which is
+                                    why we provide tailored and comprehensive solutions at the most reasonable cost. We
+                                    apply local market knowledge for the best supply chain solutions with the help of
+                                    our global partners.” </p>
+                                <div class="divider-deco" style="background-size: cover;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="marginbottom30 wow fadeInUp col-md-6 " data-wow-delay=".2s"
+                                style="background-size: cover; visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                                <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                                    <i class="fa fa-shield" aria-hidden="true"></i>
+                                    <div class="text" style="background-size: cover;">
+                                        <h4>Defence</h4>
+                                        <p>The Perfect blend of Safety and Security</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="marginbottom30 wow fadeInUp col-md-6 " data-wow-delay=".4s"
+                                style="background-size: cover; visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                                <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                    <div class="text" style="background-size: cover;">
+                                        <h4>Automotive</h4>
+                                        <p>Safety and Security when you are on drivers seat</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="marginbottom30 wow fadeInUp col-md-6" data-wow-delay=".6s"
+                                style="background-size: cover; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                                <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                                    <i class="fa fa-laptop" aria-hidden="true"></i>
+                                    <div class="text" style="background-size: cover;">
+                                        <h4>Electronics</h4>
+                                        <p>Waste reduction results to cost deduction</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="marginbottom30 wow fadeInUp col-md-6 " data-wow-delay=".6s"
+                                style="background-size: cover; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                                <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                                    <i class="fa fa-industry" aria-hidden="true"></i>
+                                    <div class="text" style="background-size: cover;">
+                                        <h4>Manufacturing</h4>
+                                        <p>Building a future with effective solutions</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="marginbottom30 wow fadeInUp col-md-6 " data-wow-delay=".6s"
+                                style="background-size: cover; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                                <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                                    <i class="fa fa-hospital-o" aria-hidden="true"></i>
+                                    <div class="text" style="background-size: cover;">
+                                        <h4>Pharma</h4>
+                                        <p>Logistics solutions that are reliable and lifesavers</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="marginbottom30 wow fadeInUp col-md-6 " data-wow-delay=".6s"
+                                style="background-size: cover; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                                <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                                    <i class="fa fa-cutlery" aria-hidden="true"></i>
+                                    <div class="text" style="background-size: cover;">
+                                        <h4>Food Grade</h4>
+                                        <p>A trusted partner with UDS model working</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+        </div>
+        </section>
+
+        <section class="bg-2 padding-5-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="counter-part text-white">
+                            <h2 class="text-white "> 100000+</h2>
+                            <h4 class="text-white"> CONTAINER HANDLING </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="counter-part text-white">
+                            <h2 class="text-white "> 60+</h2>
+                            <h4 class="text-white"> CLIENTS </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="counter-part text-white">
+                            <h2 class="text-white "> 350+</h2>
+                            <h4 class="text-white"> PROJECTS DONE </h4>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="counter-part text-white">
+                            <h2 class="text-white "> 60+</h2>
+                            <h4 class="text-white"> AGENTS </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-size: cover;">
+            <div class="container" style="background-size: cover;">
+                <div class="row" style="background-size: cover;">
+                    <div class="col-md-12">
+                        <div class="inner-padding text-center" style="background-size: cover;">
+                            <h2 class="text-center">Our Products</h2>
+                            <div class="tiny-border" style="background-size: cover;"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="marginbottom30 wow fadeInUp col-md-6 " data-wow-delay=".2s"
+                        style="background-size: cover; visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                            <i class="fa fa-plane" aria-hidden="true"></i>
+                            <div class="text" style="background-size: cover;">
+                                <h4>Air Freight</h4>
+                                <p>Opted for Air, time is money</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="marginbottom30 wow fadeInUp col-md-6 " data-wow-delay=".4s"
+                        style="background-size: cover; visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                            <i class="fa fa-clipboard" aria-hidden="true"></i>
+                            <div class="text" style="background-size: cover;">
+                                <h4>Custom Clearance</h4>
+                                <p>Adding Value to the solution with Knowledge & Experience</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="marginbottom30 wow fadeInUp col-md-6" data-wow-delay=".6s"
+                        style="background-size: cover; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                        <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                            <i class="fa fa-file-text" aria-hidden="true"></i>
+                            <div class="text" style="background-size: cover;">
+                                <h4>Contract logistics</h4>
+                                <p>A comprehensive system to manage and monitor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="marginbottom30 wow fadeInUp col-md-6 " data-wow-delay=".6s"
+                        style="background-size: cover; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                        <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                            <i class="fa fa-ship" aria-hidden="true"></i>
+                            <div class="text" style="background-size: cover;">
+                                <h4>Ocean Freight</h4>
+                                <p>Connecting to the global shipping lines</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="marginbottom30 wow fadeInUp col-md-6 " data-wow-delay=".6s"
+                        style="background-size: cover; visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                        <div class="box-icon-small bg-style-1" style="background-size: cover;">
+                            <i class="fa fa-train" aria-hidden="true"></i>
+                            <div class="text" style="background-size: cover;">
+                                <h4>Rail Freight</h4>
+                                <p>Covering all the tracks to provide global logistics solutions</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+    </div>
+    </div>
+    </section>
+
+    <!-- section begin -->
+    <section id="explore-4" class="side-bg">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 wow fadeIn" data-wow-delay=".2s">
+                    <h2>Company</h2>
+                    <div class="divider-deco"><span></span></div>
+                    <ul class="accordion style-2">
+
+                        <li>
+                            <a class="Active">Company Profile</a>
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </li>
+
+                        <li>
+                            <a class="NoneActive">Mission &amp; Vision</a>
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </li>
+
+                        <li>
+                            <a class="NoneActive">Our Value</a>
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <a class="NoneActive">Company Profile</a>
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </li>
+
+                        <li>
+                            <a class="NoneActive">Company Profile</a>
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 wow fadeIn" data-wow-delay=".4s">
+                    <h2>News</h2>
+                    <div class="divider-deco"><span></span></div>
+                    <ul class="news-list-date">
+                        <li>
+                            <div class="date">
+                                <span class="day">19</span>
+                                <span class="month">Aug</span>
+                            </div>
+                            <div class="text">
+                                <a href="#">
+                                    <h4>We Opening New Branch</h4>
+                                </a>
+                                <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="date">
+                                <span class="day">18</span>
+                                <span class="month">Aug</span>
+                            </div>
+                            <div class="text">
+                                <a href="#">
+                                    <h4>Estimate Shipping Cost</h4>
+                                </a>
+                                <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="date">
+                                <span class="day">17</span>
+                                <span class="month">Aug</span>
+                            </div>
+                            <div class="text">
+                                <a href="#">
+                                    <h4>Tracking From Mobile Phone</h4>
+                                </a>
+                                <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 wow fadeIn" data-wow-delay=".6s">
+                    <h2>They Says</h2>
+                    <div class="divider-deco"><span></span></div>
+
+                    <div id="testi-carousel-2" class="testi-slider wow fadeIn" data-wow-delay="0s"
+                        data-wow-duration="1s">
+                        <div class="item">
+                            <blockquote>
+                                Gocargo people professional and courteous attitude, expert knowledge and patience
+                                handling our specific issues are very important to our customer
+
+                            </blockquote>
+                            <div class="arrow-down"></div>
+                            <div class="testi-by">
+                                <img src="img/about/testimonials/testimonial-1.jpg" class="img-circle" alt="">
+                                <span class="name"><strong>Jane Salima</strong>, General Manager<br>
+                                    Nexus Motors</span>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <blockquote>
+                                Your representatives have very helpful attitude and their attention to detail help us to
+                                move our work smoothly without any delay...good job guys
+
+                            </blockquote>
+                            <div class="arrow-down"></div>
+                            <div class="testi-by">
+                                <img src="img/about/testimonials/testimonial-2.jpg" class="img-circle" alt="">
+                                <span class="name"><strong>Dave Smith</strong>, Sales Manager<br>
+                                    Jepara Furniture</span>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <blockquote>
+                                I'm really impressed by the professionalism that the Gocargo relocation. Now we stay
+                                with our new studio at Metro city thanks Gocargo
+
+                            </blockquote>
+                            <div class="arrow-down"></div>
+                            <div class="testi-by">
+                                <img src="img/about/testimonials/testimonial-3.jpg" class="img-circle" alt="">
+                                <span class="name"><strong>Mike Martien</strong>, Web Designer<br>
+                                    Bamskies Studio</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </section>
+    <!-- section close -->
+
+
+    <section id="section-contact-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="light-text">
+                        <div class="bg-2 padding30">
+
+                            <h2 class="id-color">Gocargo Commitment</h2>
+                            <div class="tiny-border"></div>
+                            <p class="lead big">
+                                <i>Fell free to asking about Gocargo or Just say hello to us </i>
+                            </p>
+                            <div class="text-center">
+                                <img src="img/contact/truck.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-8">
+                    <form id="contact" class="row form-transparent" name="form1" method="post" action="">
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="First Name*" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="last_name" id="last_name"
+                                placeholder="Last Name*" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <div id="error_email" class="error">Please check your email</div>
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email*" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <div id="error_email" class="error">Please check your email</div>
+                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone*" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <div id="error_message" class="error">Please check your message</div>
+                            <textarea cols="10" rows="10" name="message" id="message" class="form-control"
+                                placeholder="Your message"></textarea>
+                        </div>
+
+                        <div id="mail_success" class="col-md-12 success">Thank you. Your message has been sent.</div>
+                        <div id="mail_failed" class="col-md-12 error">Error, email not sent</div>
+
+                        <div class="col-md-12">
+                            <p id="btnsubmit">
+                                <input type="submit" id="send" value="Send" class="btn btn-custom fullwidth" />
+                            </p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div>
+
+
+    <!-- footer begin -->
+    <footer class="sticky">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="widget widget_tags">
+                        <h3>About Us</h3>
+                        <img src="img/logo.png" alt="" class="marginbottom20">
+                        <div class="clearfix"></div>
+                        <p>SKYDR works on the basis of UDS Model - Understanding Designing Solution. We, at SKYDR, strongly believe in the value of “I AM” - INNOVATION by ACTION & MANAGEMENT. This is what defines SKYDR, and sets us apart. We do not compete with others. Rather, SYKDR competes with itself, everyday, at every transaction. </p>
+                        <a href="#" class="btn-arrow id-color hover-light"><span class="line"></span><span
+                                class="url">View Details</span></a>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="widget">
+                        <h3><a href="https://www.google.com/maps/dir/28.5493464,77.2504313/skydr+trans/@28.5494375,77.2483213,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x390ce3e81ef86ec5:0x602d64718262f2ac!2m2!1d77.2504835!2d28.5495287" target="_blank">Locations</a></h3>
+                        
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3504.6766418642183!2d77.24832126508075!3d28.549437532450693!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3e81ef86ec5%3A0x602d64718262f2ac!2sSKYDR%20TRANS%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sin!4v1663577417720!5m2!1sen!2sin" width="270" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="widget">
+                        <h3>Newsletter</h3>
+                        Subscribe to our newsletter and stay updated for special offers!
+                        <div class="divider"></div>
+                        <input type="text" class="form-control form-border text-center marginbottom10" name="email"
+                            id="email" placeholder="Your name" />
+                        <input type="submit" id="send" value="Subscribe Now"
+                            class="btn btn-custom padding10 width100p" />
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="widget">
+                        <h3>Useful Links</h3>
+                        <ul class="list-1-col">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Product</a></li>
+                            <li><a href="">Industries</a></li>
+                            <li><a href="">News</a></li>
+                            <li><a href="">Resources</a></li>
+                            <li><a href="">Contact</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="subfooter">
+            &copy; Copyright 2016 - GoCargo by ExoTheme
+        </div>
+    </footer>
+    <!-- footer close -->
+    </div>
+
+    <!-- LOAD JS FILES -->
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
+    <script src="js/selectnav.js"></script>
+    <script src="js/ender.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/tweecool.js"></script>
+    <script src="js/jquery.stellar.js"></script>
+    <script src="js/typed.js"></script>
+
+    <!-- theme custom and plugin settings -->
+    <script src="js/custom.js"></script>
+    <script src="js/custom-tweecool.js"></script>
+
+</body>
+
+</html>
